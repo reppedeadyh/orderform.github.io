@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <script src= "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+      </script>
+    <meta charset="UTF-8">
+    <title>ORDER FORM</title>
+   <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+   <div class="container">
+      
+        <div id="makepdf">
+    <h1>ORDER FORM</h1>
+    <form>
+      <fieldset>
+        <legend>Payment By</legend>
+        <label>
+          <input type="radio" name="payment" value="bank-transfer">
+          Bank Transfer
+        </label>
+        <label>
+          <input type="radio" name="payment" value="indiamart">
+          IndiaMart
+        </label>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Customer Information</legend>
+        <label>
+          Date:
+          <input type="date" name="date" style="font-size:14px">
+        </label>
+        
+        <label>
+          Name:
+          <input type="text" name="name">
+        </label>
+        
+        <label>
+          Company:
+          <input type="text" name="company">
+        </label>
+       
+        <label>
+          Phone Number:
+          <input type="tel" name="phone">
+        </label>
+        
+        <label>
+          GST:
+          <input type="text" name="gst">
+        </label>
+        
+        <label>
+          Address:
+          <textarea name="address"></textarea>
+        </label>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Shipping Method</legend>
+        <label>
+          <input type="radio" name="shipping" value="transport" id="transport-radio">
+          Transport
+        </label>
+        <label>
+          <input type="radio" name="shipping" value="courier" id="courier-radio">
+          Courier
+        </label>
+        
+        <div id="transport-fields" style="display:none">
+          <label>
+            Name of Transport:
+            <input type="text" name="transport-name">
+          </label>
+          
+          <label>
+            Booking Destination:
+            <input type="text" name="booking-destination">
+          </label>
+        </div>
+        
+        <div id="courier-fields" style="display:none">
+          <label>
+            Courier Name:
+            <input type="text" name="courier-name">
+          </label>
+          
+          
+        </div>
+      </fieldset>
+      
+      <br>
+      
+	<table id="myTable">
+		<thead>
+			<tr>
+				<th style="width:42%;">Item Name</th>
+				<th style="width:12%;">Packing</th>
+				<th style="width:6%;">Units</th>
+				<th style="width:11%;">Quantity in Kg</th>
+				<th style="width:12%;">Price / Kg</th>
+				<th style="width:17%;">Total</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr>
+				<!-- ONE ROW------------------------------------------------------------------------------ -->
+				<td>
+					<select name="Item_Name" onchange="updatePackingOptions(this.parentNode.parentNode)">
+						<option value="">Select Item</option>
+				    
+				   <option value="11605 - PIGMENT GREEN 7">11605 - PIGMENT GREEN 7</option>
+            <option value="11683 - PIGMENT GREEN (Aquamarine)">11683 - PIGMENT GREEN (Aquamarine)</option>
+            <option value="11601 - PIGMENT GREEN 7">11601 - PIGMENT GREEN 7</option>
+            <option value="11097 - PARROT GREEN PASTE">11097 - PARROT GREEN PASTE</option>
+            <option value="11099 - ALOEVERA GREEN PASTE">11099 - ALOEVERA GREEN PASTE</option>
+            <option value="11552 - BITA BLUE PASTE 15.3">11552 - BITA BLUE PASTE 15.3</option>
+            <option value="11510 - PIGMENT BLUE 15">11510 - PIGMENT BLUE 15</option>
+            <option value="11501 - BLUE PASTE">11501 - BLUE PASTE</option>
+            <option value="11400 - PIGMENT VIOLET 23">11400 - PIGMENT VIOLET 23</option>
+            <option value="11005 - PIGMENT YELLOW 12">11005 - PIGMENT YELLOW 12</option>
+            <option value="11032 - PIGMENT YELLOW 74">11032 - PIGMENT YELLOW 74</option>
+            <option value="11098 - GOLDEN YELLOW PASTE">11098 - GOLDEN YELLOW PASTE</option>
+            <option value="11100 - PIGMENT ORANGE 13">11100 - PIGMENT ORANGE 13</option>
+            <option value="11111 - PIGMENT ORANGE 5">11111 - PIGMENT ORANGE 5</option>
+            <option value="11211 - PIGMENT RED 112">11211 - PIGMENT RED 112</option>
+            <option value="11202 - PIGMENT RED 8">11202 - PIGMENT RED 8</option>
+            <option value="11203 - PIGMENT RED 8 (Jaipuri Shade)">11203 - PIGMENT RED 8 (Jaipuri Shade)</option>
+            <option value="11201 - PIGMENT RED 8">11201 - PIGMENT RED 8</option>
+            <option value="11288 - PINK PASTE">11288 - PINK PASTE</option>
+            <option value="11900 - BLACK PASTE">11900 - BLACK PASTE</option>
+
+            <option value="BEAUTY">BEAUTY</option>
+            <option value="CHARLI">CHARLI</option>
+            <option value="DREAMS">DREAMS</option>
+            <option value="JASMINE NMA">JASMINE NMA</option>
+            <option value="JUHI">JUHI</option>
+            <option value="L - PINK">L - PINK</option>
+            <option value="M. CHAMPA">M. CHAMPA</option>
+            <option value="MUSKY ROSE">MUSKY ROSE</option>
+            <option value="S 509">S 509</option>
+            <option value="PRESTIGE">PRESTIGE</option>
+            <option value="LILY">LILY</option>
+            <option value="TIDE">TIDE</option>
+            <option value="MOOGRA MAGIC">MOOGRA MAGIC</option>
+            <option value="FORSTIC">FORSTIC</option>
+            <option value="ROSENAM">ROSENAM</option>
+            <option value="SANDAL FIRST">SANDAL FIRST</option>
+            <option value="LIME FIRST">LIME FIRST</option>
+            <option value="DRAGON">DRAGON</option>
+            <option value="LAVENDER">LAVENDER</option>
+            <option value="LEMON GA">LEMON GA</option>
+            <option value="LEMON VM">LEMON VM</option>
+            <option value="LIRIL - 2000">LIRIL - 2000</option>
+            <option value="DETTOL">DETTOL</option>
+            <option value="MEGNET">MEGNET</option>
+            <option value="PRILL">PRILL</option>
+            <option value="SURF">SURF</option>
+            <option value="GREEN FLOWER">GREEN FLOWER</option>
+
+				
+					</select>
+				
+				
+				</td>
+				<td>
+					<select name="packing[]">
+						<option value="">Select Packing</option>
+					</select>
+				</td>
+				 <td><input type="text" name="units"></td>
+          <td><input type="text" name="quantity" onchange="calculateTotal(this.parentNode.parentNode)"></td>
+          <td><input type="text" name="price" onchange="calculateTotal(this.parentNode.parentNode)"></td>
+          <td><input type="text" name="total" readonly></td>
+			</tr>
+			
+				<!-- ONE ROW END------------------------------------------------------------------------------ -->
+			
+			
+		</tbody>
+		
+		  <tfoot>
+    <tr>
+      <td colspan="5" align="right">Shipping:</td>
+      <td><input type="text" name="shipping" id="shipping"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right">Sub total:</td>
+      <td><input type="text" name="subtotal" id="subtotal"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right">GST 18%:</td>
+      <td><input type="text" name="gst" id="gst"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right">Total Amount:</td>
+      <td><input type="text" name="totalamount" id="totalamount"></td>
+    </tr>
+  </tfoot>
+		
+	</table>
+	
+ <br>
+      <fieldset>
+        <legend>Notes</legend>
+           
+          <textarea name="address"></textarea>
+        
+      </fieldset>
+<br>
+            <input type="button" id="mysubmit" value="Add New Row" onClick="addNewRow()">
+
+        
+     
+    </form>
+    </div>
+    
+    
+    
+    
+    
+    
+    <script>
+    
+    
+      
+   
+    
+    
+     var itemPackingOptions = {
+      
+        "Select Item" : ["Select Packing"],
+        
+          "11605 - PIGMENT GREEN 7" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11683 - PIGMENT GREEN (Aquamarine)" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11601 - PIGMENT GREEN 7" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11097 - PARROT GREEN PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11099 - ALOEVERA GREEN PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11552 - BITA BLUE PASTE 15.3" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11510 - PIGMENT BLUE 15" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11501 - BLUE PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11400 - PIGMENT VIOLET 23" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11005 - PIGMENT YELLOW 12" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11032 - PIGMENT YELLOW 74" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11098 - GOLDEN YELLOW PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11100 - PIGMENT ORANGE 13" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11111 - PIGMENT ORANGE 5" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11211 - PIGMENT RED 112" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11202 - PIGMENT RED 8" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11203 - PIGMENT RED 8 (Jaipuri Shade)" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11201 - PIGMENT RED 8" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11288 - PINK PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          "11900 - BLACK PASTE" : ["25 Kg", "5 Kg", "500 Gram","50 Gram"],
+          
+          
+           "BEAUTY" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "CHARLI" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "DREAMS" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "JASMINE NMA" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "JUHI" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "L - PINK" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "M. CHAMPA" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "MUSKY ROSE" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "S 509" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "PRESTIGE" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "LILY" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "TIDE" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "MOOGRA MAGIC" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "FORSTIC" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "ROSENAM" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "SANDAL FIRST" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "LIME FIRST" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "DRAGON" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "LAVENDER" : ["200 Kg", "30 Kg", "5 Kg", "500 Gram","50 Gram"],
+            "LEMON GA" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "LEMON VM" : ["180 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "LIRIL - 2000" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "DETTOL" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "MEGNET" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "PRILL" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "SURF" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+            "GREEN FLOWER" : ["200 Kg", "28 Kg", "4.5 Kg", "450 Gram","50 Gram"],
+
+
+
+        
+        
+      };
+
+      function updatePackingOptions(row) {
+        var itemSelect = row.cells[0].getElementsByTagName("select")[0];
+        var packingSelect = row.cells[1].getElementsByTagName("select")[0];
+        var selectedOptions = itemPackingOptions[itemSelect.value];
+        packingSelect.options.length = 0;
+        for (var i = 0; i < selectedOptions.length; i++) {
+          var option = new Option(selectedOptions[i], selectedOptions[i]);
+          packingSelect.add(option);
+        }
+      }
+
+    
+    
+      
+      
+    
+      const transportRadio = document.getElementById("transport-radio");
+      const transportFields = document.getElementById("transport-fields");
+      const courierFields = document.getElementById("courier-fields");
+      
+      transportRadio.addEventListener("click", function() {
+        if (transportRadio.checked) {
+          transportFields.style.display = "block";
+          courierFields.style.display = "none";
+        }
+      });
+      
+      const courierRadio = document.getElementById("courier-radio");
+      
+      courierRadio.addEventListener("click", function() {
+        if (courierRadio.checked) {
+          transportFields.style.display = "none";
+          courierFields.style.display = "block";
+        }
+      });
+      
+      
+      
+      
+      function addNewRow() {
+  var table = document.getElementsByTagName("table")[0];
+  var tbodyRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+  
+  var newRow = tbodyRef.insertRow();;
+  var firstRow = table.rows[1];
+  for (var i = 0; i < firstRow.cells.length; i++) {
+    var newCell = newRow.insertCell(i);
+    newCell.innerHTML = firstRow.cells[i].innerHTML;
+    if (i > 1) {
+      newCell.getElementsByTagName("input")[0].value = "";
+    }
+  }
+    updateTotal();
+}
+
+
+
+
+// Get the tbody element
+var tbody = document.getElementById("tbody");
+
+// Get the input elements for the new fields
+var shippingInput = document.getElementById("shipping");
+var subtotalInput = document.getElementById("subtotal");
+var gstInput = document.getElementById("gst");
+var totalAmountInput = document.getElementById("totalamount");
+
+
+
+
+
+  function calculateTotal(row) {
+        var price = parseFloat(row.cells[4].getElementsByTagName("input")[0].value);
+        var quantity = parseFloat(row.cells[3].getElementsByTagName("input")[0].value);
+        var total = price * quantity;
+        row.cells[5].getElementsByTagName("input")[0].value = total.toFixed(0);
+          updateTotal();
+      }
+
+
+
+
+function updateTotal() {
+  // Calculate the sub total
+  var subtotal = 0;
+  var rows = document.querySelectorAll("tbody tr");
+  for (var i = 0; i < rows.length; i++) {
+    var totalInput = rows[i].querySelector("[name=total]");
+    var total = parseFloat(totalInput.value) || 0;
+    subtotal += total;
+  }
+  subtotal += parseFloat(shippingInput.value) || 0;
+  subtotalInput.value = subtotal.toFixed(0);
+
+  // Calculate the GST 18%
+  var gst = subtotal * 0.18;
+  gstInput.value = gst.toFixed(2);
+
+  // Calculate the total amount
+  var totalAmount = subtotal + gst;
+  totalAmountInput.value = totalAmount.toFixed(0);
+}
+      
+// Add event listeners to the input elements to calculate the new fields
+var inputs = document.querySelectorAll("input");
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("input", updateTotal);
+}
+
+
+    </script>
+  
+  </body>
+</html>
